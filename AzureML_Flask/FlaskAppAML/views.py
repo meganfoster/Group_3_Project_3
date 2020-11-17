@@ -11,20 +11,20 @@ from FlaskAppAML import app
 #testing
 from FlaskAppAML.forms import SubmissionForm
 
-BRAIN_ML_KEY=os.environ.get('API_KEY', "+h6njA8LcCvmlj95UhvaM9Q94HpxESoMX08bI2/BUkIhnuHROtJu5J4iw6YEkTh4nANKBRgZV8zhTjrBg4m/iA==")
-BRAIN_URL = os.environ.get('URL', "https://ussouthcentral.services.azureml.net/workspaces/55451c7c792248ee9e345512889cfd3f/services/f5f2450084424de0ac1a55c0c08ff5cc/execute?api-version=2.0&details=true")
+HOUSING_ML_KEY = os.environ.get('API_KEY', "+h6njA8LcCvmlj95UhvaM9Q94HpxESoMX08bI2/BUkIhnuHROtJu5J4iw6YEkTh4nANKBRgZV8zhTjrBg4m/iA==")
+HOUSING_URL = os.environ.get('URL', "https://ussouthcentral.services.azureml.net/workspaces/55451c7c792248ee9e345512889cfd3f/services/f5f2450084424de0ac1a55c0c08ff5cc/execute?api-version=2.0&details=true")
 # Deployment environment variables defined on Azure (pull in with os.environ)
 
 # Construct the HTTP request header
 # HEADERS = {'Content-Type':'application/json', 'Authorization':('Bearer '+ API_KEY)}
 
-HEADERS = {'Content-Type':'application/json', 'Authorization':('Bearer '+ BRAIN_ML_KEY)}
+HEADERS = {'Content-Type':'application/json', 'Authorization':('Bearer '+ HOUSING_ML_KEY)}
 
 # Our main app page/route
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/home', methods=['GET', 'POST'])
 def home():
-    """Renders the home page which is the CNS of the web app currently, nothing pretty."""
+    """Renders the home price predictor page."""
 
     form = SubmissionForm(request.form)
 
@@ -64,7 +64,7 @@ def home():
 
         # Formulate the request
         #req = urllib.request.Request(URL, body, HEADERS)
-        req = urllib.request.Request(BRAIN_URL, body, HEADERS)
+        req = urllib.request.Request(HOUSING_URL, body, HEADERS)
 
         # Send this request to the AML service and render the results on page
         try:
