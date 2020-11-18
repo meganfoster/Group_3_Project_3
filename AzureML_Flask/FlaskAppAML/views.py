@@ -29,7 +29,7 @@ def home():
     form = SubmissionForm(request.form)
 
     # Form has been submitted
-    if request.method == 'POST' and form.validate():
+    if request.method == 'POST' :
 
         # Plug in the data into a dictionary object 
         #  - data from the input form
@@ -74,9 +74,10 @@ def home():
         try:
             # response = requests.post(URL, headers=HEADERS, data=body)
             response = urllib.request.urlopen(req)
-            #print(response)
+            
             respdata = response.read()
             result = json.loads(str(respdata, 'utf-8'))
+            print(result)
             result = do_something_pretty(result)
             # result = json.dumps(result, indent=4, sort_keys=True)
             return render_template(
@@ -128,7 +129,7 @@ def do_something_pretty(jsondata):
 
     # We only want the first array from the array of arrays under "Value" 
     # - it's cluster assignment and distances from all centroid centers from k-means model
-    value = jsondata["RegionID"] ["Stock_Market" ]["Mortgage_Rate"] ["Monthly_Supply_Of_Homes"] ["Median_Price_Range"][0]
+    value = jsondata["Results"]["output1"]["value"]["Values"][0]
             
     #valuelen = len(value)
     print(value)
@@ -143,7 +144,7 @@ def do_something_pretty(jsondata):
     # Build a placeholder for the cluster#,distance values
     #repstr = '<tr><td>%d</td><td>%s</td></tr>' * (valuelen-1)
     # print(repstr)
-    output="Our Algorithm calculates the price to be: "+ value[5]
+    output="Our Algorithm calculates the price to be: "+ value[27]
     # Build the entire html table for the results data representation
     #tablestr = 'Cluster assignment: %s<br><br><table border="1"><tr><th>Cluster</th><th>Distance From Center</th></tr>'+ repstr + "</table>"
     #return tablestr % data
