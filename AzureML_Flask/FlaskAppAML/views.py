@@ -22,6 +22,25 @@ HEADERS = {'Content-Type':'application/json', 'Authorization':('Bearer '+ HOUSIN
 
 # Our main app page/route
 @app.route('/', methods=['GET', 'POST'])
+
+@app.route('/landing')
+def landing():
+    """Renders the home page."""
+    return render_template(
+        'landing.html',
+        title='Landing',
+        message='Troy.'
+    )
+
+@app.route('/visualizations')
+def visualizations():
+    """Renders the visualizations page."""
+    return render_template(
+        'visualizations.html',
+        title='visualizations',
+        message='Smile'
+    )
+
 @app.route('/home', methods=['GET', 'POST'])
 def home():
     """Renders the home price predictor page."""
