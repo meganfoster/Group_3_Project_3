@@ -1,13 +1,15 @@
 ﻿{% extends "layout.html" %}
 
 {% block content %}
-<h2>Determine the future value of your home based on market conditions</h2>
+
+<h2>Determine the price of a home based on the below factors:</h2>
+
 <form method=post>
     <dl>
         <p>
-            <h3>RegionID</h3>
-            Type in Metro Area by Region ID <br/><br/>
-            {{form.RegionID}}
+          <h3>RegionID</h3>
+          Enter the Metro Area ID<br/><br/>
+          {{form.RegionID}}
         </p>
 
         <p>
