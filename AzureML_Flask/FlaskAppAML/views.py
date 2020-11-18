@@ -54,9 +54,13 @@ def home():
         "Inputs": {
                 "input1":
                 {
+                   
                     "ColumnNames": ["RegionID", "Stock_Market", "Mortgage_Rate", "Monthly_Supply_Of_Homes", "Median_Price_Range"],
-                    "Values": [ [ "0", "0", "0", "0", "value" ], [ "0", "0", "0", "0", "value" ], ]
-                },        },
+                    "Values": [ [ form.RegionID.data.lower(), form.Stock_Market.data.lower(), form.Mortgage_Rate.data.lower(), form.Monthly_Supply_Of_Homes.data.lower(),0 
+                        ] 
+                    ]
+                }        
+            },
             "GlobalParameters": {}
             }
         # Serialize the input data into json string
