@@ -27,9 +27,7 @@ HEADERS = {'Content-Type':'application/json', 'Authorization':('Bearer '+ HOUSIN
 def landing():
     """Renders the home page."""
     return render_template(
-        'landing.html',
-        title='Landing',
-        message='Troy.'
+        'landing.html'
     )
 
 @app.route('/visualizations')
